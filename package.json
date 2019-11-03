@@ -1,0 +1,22 @@
+{
+  "name": "ticketman",
+  "version": "1.0.0",
+  "description": "A Ticket Management System in a Discord Bot using Node.js and Discord.js",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JGehl99/TicketMan.git"
+  },
+  "author": "Joshua Gehl",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/JGehl99/TicketMan/issues"
+  },
+  "homepage": "https://github.com/JGehl99/TicketMan#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
