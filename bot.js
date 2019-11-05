@@ -66,6 +66,7 @@ client.on("message",message=>{
 
 		//If the message author has the permission OR if no permissions are required
 		if (message.member.roles.find(r => r.name === command.roles) || !command.roles.length){
+			console.log(config.prefix + command.name + " has been executed!");
 			command.execute(message,config);
 		} else{
 			message.reply("You do not have permission to use that command!");
