@@ -29,14 +29,24 @@ client.on("ready",()=>{
 	console.log("Ready!");
 });
 
+client.on('guildMemberAdd', (guildMember) => {
+
+	guildMember.guild.channels.get("640401182568873984").send("Welcome to the server, <@" + guildMember.id + ">!");
+	guildMember.addRole(guildMember.guild.roles.find(role => role.name === 'Users')).then(f =>{
+		console.log(guildMember.displayName + " has been added to Users.")});
+}); 
+
+
 //On Message
 client.on("message",message=>{
 	if(message.content.startsWith(config.prefix) && !message.author.bot){
 
 		// Remove prefix and store command and shift 'commandName' out of args
 		const args = message.content.slice(config.prefix.length).split(/ +/);
-		console.log(args);
+		
 		const commandName = args.shift().toLowerCase();
+
+		console.log(args);
 
 		// If the command doesn't exist, return null
 		//TODO: Add wrong command message
@@ -47,6 +57,12 @@ client.on("message",message=>{
 		
 		//Sets command to the command 
 		const command = client.commands.get(commandName);
+
+		//Display usage if command.usage is empty, and if there were no arguments entered
+		if (command.usage.length != 0 && args.length == 0){
+			message.reply("Usage: ```" + config.prefix + commandName + " " + command.usage + "```");
+			return;
+		}
 
 		//If the message author has the permission OR if no permissions are required
 		if (message.member.roles.find(r => r.name === command.roles) || !command.roles.length){
