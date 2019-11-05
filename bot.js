@@ -21,12 +21,12 @@ for (const file of commandFiles) {
 
 //Logs the bot in
 client.login(config.token).then(f =>{
-	console.log("Logged In!");
+	console.log("Bot is Logged In!");
 });
 
 //Bot is Ready
 client.on("ready",()=>{
-	console.log("Ready!");
+	console.log("Bot is Ready!");
 });
 
 client.on('guildMemberAdd', (guildMember) => {
