@@ -57,6 +57,7 @@ client.on("message",message=>{
 		
 		//Sets command to the command 
 		const command = client.commands.get(commandName);
+		console.log(command);
 
 		//Display usage if command.usage is empty, and if there were no arguments entered
 		if (command.usage.length != 0 && args.length == 0){
@@ -67,7 +68,7 @@ client.on("message",message=>{
 		//If the message author has the permission OR if no permissions are required
 		if (message.member.roles.find(r => r.name === command.roles) || !command.roles.length){
 			console.log(config.prefix + command.name + " has been executed!");
-			command.execute(message,config);
+			command.execute(client, message, config, command);
 		} else{
 			message.reply("You do not have permission to use that command!");
 			return;
