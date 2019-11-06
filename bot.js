@@ -61,7 +61,7 @@ client.on("message",message=>{
 
 		//Display usage if command.usage is empty, and if there were no arguments entered
 		if (command.usage.length != 0 && args.length == 0){
-			message.reply("Usage: ```" + config.prefix + commandName + " " + command.usage + "```");
+			message.reply("Usage: `" + config.prefix + commandName + " " + command.usage + "`");
 			return;
 		}
 
