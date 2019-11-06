@@ -32,8 +32,8 @@ client.on("ready",()=>{
 client.on('guildMemberAdd', (guildMember) => {
 
 	guildMember.guild.channels.get("640401182568873984").send("Welcome to the server, <@" + guildMember.id + ">!");
-	guildMember.addRole(guildMember.guild.roles.find(role => role.name === 'Users')).then(f =>{
-		console.log(guildMember.displayName + " has been added to Users.")});
+	guildMember.addRole(guildMember.guild.roles.find("641330577517314048").then(f =>{
+		console.log(guildMember.displayName + " has been added to Users.")}));
 }); 
 
 
