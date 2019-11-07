@@ -31,9 +31,10 @@ client.on("ready",()=>{
 
 client.on('guildMemberAdd', (guildMember) => {
 
-	guildMember.guild.channels.get("640401182568873984").send("Welcome to the server, <@" + guildMember.id + ">!");
-	guildMember.addRole(guildMember.guild.roles.find("641330577517314048").then(f =>{
-		console.log(guildMember.displayName + " has been added to Users.")}));
+	//TODO: Change .get() id to welcome channel
+	guildMember.guild.channels.get("641494936931270656").send("Welcome to the server, <@" + guildMember.id + ">!");
+	guildMember.addRole("641330577517314048").then(f =>{
+		console.log(guildMember.displayName + " has been added to Users.")});
 }); 
 
 
@@ -46,7 +47,12 @@ client.on("message",message=>{
 		
 		const commandName = args.shift().toLowerCase();
 
+		
+		console.log("\n\n================================");
+		console.log("Arguments: ");
+		console.log("================================");
 		console.log(args);
+		console.log("================================\n\n");
 
 		// If the command doesn't exist, return null
 		//TODO: Add wrong command message
@@ -57,7 +63,11 @@ client.on("message",message=>{
 		
 		//Sets command to the command 
 		const command = client.commands.get(commandName);
+		console.log("\n\n================================");
+		console.log("Command: ");
+		console.log("================================");
 		console.log(command);
+		console.log("================================\n\n");
 
 		//Display usage if command.usage is empty, and if there were no arguments entered
 		if (command.usage.length != 0 && args.length == 0){
