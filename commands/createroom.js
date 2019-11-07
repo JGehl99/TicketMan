@@ -18,11 +18,34 @@ module.exports = {
         //
         //
 
+        //Name and ID of the mentioned user
+
+        let user = message.mentions.users.first();
+        let guildUser = message.guild.members.find();
+        console.log(user + "\n\n\n" + guildUser);
+        console.log("*************" + user.username+"**************");
+
+            //Creates role with name of user, pink color, then adds user to role
+            message.guild.createRole({
+                name: user.username,
+                color: 'LUMINOUS_VIVID_PINK'
+            }).then(() =>{
+                console.log("Created Role")
+                let role = message.guild.roles.find(r => r.name === user.username)
+                console.log(role);
+                console.log("Role Created")
+                console.log(role.id);
+                user.addRole(role.id);
+            }).catch(console.error);
 
 
-        console.log(message);
+
+            
+
+        //console.log(message);
+
         message.channel.send("Create Room!");
-        message.guild.createChannel(message,{
+        message.guild.createChannel(user.username,{
             type: "text",
             parent: "641755544549326848",
             permissionOverwrites: [
@@ -35,14 +58,10 @@ module.exports = {
                     //Staff
                     id: "641330637000933397",
                     allow: ["VIEW_CHANNEL"]
-                },
-                {
-                    //Helper
-                    //id: 
                 }
             ]
         }).then(()=>{
-            console.log;
+            //console.log;
         })
         .catch(console.error);
     }
