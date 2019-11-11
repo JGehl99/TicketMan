@@ -75,6 +75,15 @@ client.on("message",message=>{
 			return;
 		}
 
+		// TODO
+		/*
+			Change the permission check to check against an array of roles
+			Allows for multiple roles per command
+
+		*/
+
+
+
 		//If the message author has the permission OR if no permissions are required
 		if (message.member.roles.find(r => r.name === command.roles) || !command.roles.length){
 			console.log(config.prefix + command.name + " has been executed!");
