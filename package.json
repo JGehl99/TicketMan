@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/JGehl99/TicketMan#readme",
   "dependencies": {
-    "discord.js": "^11.5.1"
+    "discord.js": "^11.5.1",
+    "mysql": "^2.17.1"
   }
 }
