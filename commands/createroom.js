@@ -8,15 +8,12 @@ module.exports = {
     example: "!createroom Gameproguy",
     execute(client, message, config, command){
 
-        //Command to get user id from mention (to make role for staff and user)
-        //message.mentions.users.first().id
-        //
         //TODO
-        //
-        // Create a role and add user to it
-        // Change all instances of 'message' using the new id method above
-        //
-        //
+        /*
+            Make temp role stay on user, then that allows them to search for their own solutions
+            Modify deleteroom to NOT delete user role
+
+        */
 
         //Name and ID of the mentioned user
 
