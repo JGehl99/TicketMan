@@ -11,7 +11,14 @@ module.exports = {
         
         let username = message.mentions.users.first().username;
 
-        
+        let results = search(username);
+
+        if (results != -1){
+            console.log(results);
+            
+        } else{
+            message.reply("There was an error accessing the Database!");
+        }
 
     }
 }
