@@ -6,8 +6,12 @@ let config = require('./config.js');
 
 let debug = true;
 
-if (debug)
-    createTicket("Test Author", "Another testing description!");
+if (debug){
+    // createTicket("Test Author", "Another testing description!");
+    searchTicketByID(2);
+    searchTicketByUser("Test Author");
+    listTickets()
+;}
 
 function createTicket(author, desc){
     //Opens a connection with the Database
@@ -28,8 +32,69 @@ function createTicket(author, desc){
         console.log('Created Ticket with ID:' + results.insertId);
     });
 
-    // console.log("Data added to table");
     connection.end();
 }
+
+function searchTicketByID(ticketID) {
+    let connection = mysql.createConnection(config);
+    let ticketInfo = `SELECT * FROM tickets WHERE id=` + connection.escape(ticketID);
+    var ticket;
+    connection.query(ticketInfo, (error, results, fields) => {
+        if (error) {
+            console.error(error.message);
+            return -1;
+        }
+        ticket = results;
+        console.log(results);
+    });
+    connection.end();
+}
+
+function searchTicketByUser(author){
+    let connection = mysql.createConnection(config);
+    let ticketInfo = `SELECT * FROM tickets WHERE author=` + connection.escape(author);
+    var ticket;
+    connection.query(ticketInfo, (error, results, fields) => {
+        if (error) {
+            console.error(error.message);
+            return -1;
+        }
+        ticket = results;
+        console.log(results);
+    });
+    connection.end();
+    return ticket;
+}
+
+function editTicket(newDesc, ticketID){
+    let connection = mysql.createConnection(config);
+    let ticketInfo = `UPDATE tickets SET description=` + connection.escape(newDesc) + ` WHERE id=` +
+        connection.escape(ticketID);
+    connection.query(ticketInfo, (error, results, fields) => {
+        if (error) {
+            console.error(error.message);
+            return -1;
+        }
+        console.log("Ticket with ID: " + results.id + " with the following description: " + results.description);
+    });
+}
+
+function listTickets(){
+    let connection = mysql.createConnection(config);
+    let ticketInfo = `SELECT * FROM tickets`;
+    var tickets;
+    connection.query(ticketInfo, (error, results, fields) => {
+        if (error) {
+            console.error(error.message);
+            return -1;
+        }
+        tickets = results;
+        console.log(results);
+    });
+    connection.end();
+
+    return tickets;
+}
+
 
 
